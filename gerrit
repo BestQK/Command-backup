@@ -1,0 +1,33 @@
+
+	import repos to cms-gerrit
+	1 git clone --mirror <gitlab repo url>
+	git clone --mirror git@hmf.gitlab.otxlab.net:itom/cms-qa/lexi.git
+	 
+	2 create project on gerrit.
+
+
+	3 git push --mirror <gerrit_project_url>
+	git push --mirror ssh://cms-build@cms-gerrit.cmslab.io:29418/CMS-QA/lexi
+
+
+	 
+4 config cms-gerrit repo
+	change 'submit type' to Rebase if necessary
+
+
+	 
+5 set local git config information
+	git config user.name "Xin Zhang"
+	git config user.email "xzhang6@opentext.com"
+	 
+6 verify local git config settings
+	git config --local -l
+
+
+	 
+7 add rule.pl on cms-gerrit repo
+	git fetch origin refs/meta/config:config
+	git checkout config
+	git add rules.pl
+	git commit -m "My submit rules"
+	git push origin HEAD:refs/meta/config
