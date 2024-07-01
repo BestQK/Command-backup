@@ -1,0 +1,39 @@
+Git
+回滚远程分支        git reflog        git reset --hard <commitId>        git push -f 
+Fork      git fetch upstream    git checkout master    git merge upstream/master
+拉取代码        git pull --rebase
+
+撤销commit    git reset --soft HEAD^    HEAD^的意思是上一个版本，也可以写成HEAD~1;若2次commit都撤回使用HEAD~2
+--mixed   不删除工作空间改动代码，撤销commit，并撤销git add.操作;    git reset --mixed HEAD^ == git reset HEAD^ 
+--soft      不删除工作空间改动代码，撤销commit，不撤销git add.
+--hard     删除工作空间改动代码，撤销commit，撤销git add. 恢复到上次commit状态。改commit注释: git commit --amend。
+
+git rebase
+git checkout master
+git pull
+git checkout local
+git rebase -i HEAD~2 //合并提交 --- 2表示合并两个
+git rebase master---->解决冲突--->git rebase --continue
+git checkout master
+git merge local
+git push
+delete branch
+git push origin --delete <branch name>
+
+合并Commit
+git rebase -i HEAD~2
+	pick commit 1
+	f      commit 2
+git rebase --continue
+git rebase --abort
+git push origin master -f
+
+修改注释
+git commit --amend
+
+
+Add remote repo
+git remote add <remote name> <url>
+git fetch <remote name>
+git branch -r
+git checkout -b <branch>  <remote name>/master
