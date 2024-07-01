@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: suxxe-singletonpg-service
+  namespace: xxsma-nmwzd
+  labels:
+    xxsmaService: xxom-pg
+    xxsmaRelease: "2020.11"
+spec:
+  type: NodePort
+  ports:
+  - nodePort: 15432
+    name: pg-port
+    port: 5432
+  selector:
+    name: suxxe-singletonpg
